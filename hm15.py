@@ -15,3 +15,13 @@ def convert_currency(amount, from_currency, to_currency):
             'EUR': 0.024
         }
     }
+    
+    if from_currency == to_currency:
+        return amount
+
+    if from_currency not in exchange_rates or to_currency not in exchange_rates[from_currency]:
+        return None
+
+    rate = exchange_rates[from_currency][to_currency]
+    converted_amount = amount * rate
+    return converted_amount
